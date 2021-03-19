@@ -11,7 +11,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-pragma solidity 0.5.12;
+pragma solidity ^0.7.0;
 
 import "./BToken.sol";
 import "./BMath.sol";
@@ -83,12 +83,13 @@ contract BPool is BBronze, BToken, BMath {
     mapping(address=>Record) private  _records;
     uint private _totalWeight;
 
-    constructor() public {
+    function initialize() public initializer {
         _controller = msg.sender;
         _factory = msg.sender;
         _swapFee = MIN_FEE;
         _publicSwap = false;
         _finalized = false;
+        __BToken_init_unchained();
     }
 
     function isPublicSwap()
@@ -114,7 +115,7 @@ contract BPool is BBronze, BToken, BMath {
 
     function getNumTokens()
         external view
-        returns (uint) 
+        returns (uint)
     {
         return _tokens.length;
     }
@@ -194,7 +195,7 @@ contract BPool is BBronze, BToken, BMath {
         external
         _logs_
         _lock_
-    { 
+    {
         require(!_finalized, "ERR_IS_FINALIZED");
         require(msg.sender == _controller, "ERR_NOT_CONTROLLER");
         require(swapFee >= MIN_FEE, "ERR_MIN_FEE");
@@ -280,7 +281,7 @@ contract BPool is BBronze, BToken, BMath {
             require(_totalWeight <= MAX_TOTAL_WEIGHT, "ERR_MAX_TOTAL_WEIGHT");
         } else if (denorm < oldWeight) {
             _totalWeight = bsub(_totalWeight, bsub(oldWeight, denorm));
-        }        
+        }
         _records[token].denorm = denorm;
 
         // Adjust the balance record and actual token balance
@@ -471,7 +472,7 @@ contract BPool is BBronze, BToken, BMath {
                                 outRecord.denorm,
                                 _swapFee
                             );
-        require(spotPriceAfter >= spotPriceBefore, "ERR_MATH_APPROX");     
+        require(spotPriceAfter >= spotPriceBefore, "ERR_MATH_APPROX");
         require(spotPriceAfter <= maxPrice, "ERR_LIMIT_PRICE");
         require(spotPriceBefore <= bdiv(tokenAmountIn, tokenAmountOut), "ERR_MATH_APPROX");
 
@@ -492,7 +493,7 @@ contract BPool is BBronze, BToken, BMath {
     )
         external
         _logs_
-        _lock_ 
+        _lock_
         returns (uint tokenAmountIn, uint spotPriceAfter)
     {
         require(_records[tokenIn].bound, "ERR_NOT_BOUND");
@@ -552,7 +553,7 @@ contract BPool is BBronze, BToken, BMath {
         _lock_
         returns (uint poolAmountOut)
 
-    {        
+    {
         require(_finalized, "ERR_NOT_FINALIZED");
         require(_records[tokenIn].bound, "ERR_NOT_BOUND");
         require(tokenAmountIn <= bmul(_records[tokenIn].balance, MAX_IN_RATIO), "ERR_MAX_IN_RATIO");
@@ -603,7 +604,7 @@ contract BPool is BBronze, BToken, BMath {
 
         require(tokenAmountIn != 0, "ERR_MATH_APPROX");
         require(tokenAmountIn <= maxAmountIn, "ERR_LIMIT_IN");
-        
+
         require(tokenAmountIn <= bmul(_records[tokenIn].balance, MAX_IN_RATIO), "ERR_MAX_IN_RATIO");
 
         inRecord.balance = badd(inRecord.balance, tokenAmountIn);
@@ -638,7 +639,7 @@ contract BPool is BBronze, BToken, BMath {
                         );
 
         require(tokenAmountOut >= minAmountOut, "ERR_LIMIT_OUT");
-        
+
         require(tokenAmountOut <= bmul(_records[tokenOut].balance, MAX_OUT_RATIO), "ERR_MAX_OUT_RATIO");
 
         outRecord.balance = bsub(outRecord.balance, tokenAmountOut);
@@ -688,7 +689,7 @@ contract BPool is BBronze, BToken, BMath {
         _pullPoolShare(msg.sender, poolAmountIn);
         _burnPoolShare(bsub(poolAmountIn, exitFee));
         _pushPoolShare(_factory, exitFee);
-        _pushUnderlying(tokenOut, msg.sender, tokenAmountOut);        
+        _pushUnderlying(tokenOut, msg.sender, tokenAmountOut);
 
         return poolAmountIn;
     }

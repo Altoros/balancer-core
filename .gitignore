@@ -1,4 +1,4 @@
-build
+# build
 node_modules
 .idea/*
 coverage.json
@@ -6,3 +6,6 @@ coverage/
 yarn-error.log
 crytic-export
 mcore_*
+.env
+flats/
+hardhat.config.js

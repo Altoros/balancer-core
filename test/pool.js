@@ -5,6 +5,10 @@ const BPool = artifacts.require('BPool');
 const BFactory = artifacts.require('BFactory');
 const TToken = artifacts.require('TToken');
 const verbose = process.env.VERBOSE;
+const ExchangeProxyMock = artifacts.require('ExchangeProxyMock');
+const OperationsRegistryMock = artifacts.require('OperationsRegistryMock');
+const AuthorizationMock = artifacts.require('AuthorizationMock');
+const PermissionManagerMock = artifacts.require('PermissionManagerMock');
 
 contract('BPool', async (accounts) => {
     const admin = accounts[0];
@@ -20,11 +24,24 @@ contract('BPool', async (accounts) => {
     let weth; let mkr; let dai; let
         xxx; // TTokens
     let factory; // BPool factory
+    let exchangeProxy;
+    let operationsRegistry;
+    let authorization;
+    let permissionManager;
     let pool; // first pool w/ defaults
     let POOL; //   pool address
 
     before(async () => {
         factory = await BFactory.deployed();
+        exchangeProxy = await ExchangeProxyMock.deployed()
+        operationsRegistry = await OperationsRegistryMock.deployed()
+        authorization = await AuthorizationMock.deployed()
+        permissionManager = await PermissionManagerMock.deployed()
+
+        await factory.setExchProxy(exchangeProxy.address)
+        await factory.setOperationsRegistry(operationsRegistry.address)
+        await factory.setAuthorization(authorization.address)
+        await factory.setPermissionManager(permissionManager.address)
 
         POOL = await factory.newBPool.call();
         await factory.newBPool();
@@ -39,6 +56,11 @@ contract('BPool', async (accounts) => {
         MKR = mkr.address;
         DAI = dai.address;
         XXX = xxx.address;
+
+        await operationsRegistry.allowAsset(WETH)
+        await operationsRegistry.allowAsset(MKR)
+        await operationsRegistry.allowAsset(DAI)
+        await operationsRegistry.allowAsset(XXX)
 
         /*
             Tests assume token prices
@@ -65,6 +87,10 @@ contract('BPool', async (accounts) => {
         await mkr.mint(user2, toWei('1.015333'), { from: admin });
         await dai.mint(user2, toWei('0'), { from: admin });
         await xxx.mint(user2, toWei('51'), { from: admin });
+
+        await pool.approve(exchangeProxy.address, MAX);
+        await pool.approve(exchangeProxy.address, MAX, { from: user1 });
+        await pool.approve(exchangeProxy.address, MAX, { from: user2 });
     });
 
     describe('Binding Tokens', () => {
@@ -89,9 +115,13 @@ contract('BPool', async (accounts) => {
 
         it('Admin approves tokens', async () => {
             await weth.approve(POOL, MAX);
+            await weth.approve(exchangeProxy.address, MAX);
             await mkr.approve(POOL, MAX);
+            await mkr.approve(exchangeProxy.address, MAX);
             await dai.approve(POOL, MAX);
+            await dai.approve(exchangeProxy.address, MAX);
             await xxx.approve(POOL, MAX);
+            await xxx.approve(exchangeProxy.address, MAX);
         });
 
         it('Fails binding weights and balances outside MIX MAX', async () => {
@@ -187,6 +217,13 @@ contract('BPool', async (accounts) => {
 
 
     describe('Finalizing pool', () => {
+        before(async () => {
+            await weth.approve(exchangeProxy.address, MAX, { from: user1 });
+            await mkr.approve(exchangeProxy.address, MAX, { from: user1 });
+            await dai.approve(exchangeProxy.address, MAX, { from: user1 });
+            await xxx.approve(exchangeProxy.address, MAX, { from: user1 });
+        });
+
         it('Fails when other users interact before finalizing', async () => {
             await truffleAssert.reverts(
                 pool.bind(WETH, toWei('5'), toWei('5'), { from: user1 }),
@@ -196,12 +233,17 @@ contract('BPool', async (accounts) => {
                 pool.rebind(WETH, toWei('5'), toWei('5'), { from: user1 }),
                 'ERR_NOT_CONTROLLER',
             );
+            const maxWeth = await weth.balanceOf(user1)
+            const maxMkr = await mkr.balanceOf(user1)
+            const maxDai = await dai.balanceOf(user1)
             await truffleAssert.reverts(
-                pool.joinPool(toWei('1'), [MAX, MAX], { from: user1 }),
+                // pool.joinPool(toWei('1'), [MAX, MAX], { from: user1 }),
+                exchangeProxy.joinPool(pool.address, toWei('1'), [MAX, MAX, MAX], { from: user1 }),
                 'ERR_NOT_FINALIZED',
             );
             await truffleAssert.reverts(
-                pool.exitPool(toWei('1'), [toWei('0'), toWei('0')], { from: user1 }),
+                // pool.exitPool(toWei('1'), [toWei('0'), toWei('0')], { from: user1 }),
+                exchangeProxy.exitPool(pool.address, toWei('1'), [toWei('0'), toWei('0')], { from: user1 }),
                 'ERR_NOT_FINALIZED',
             );
             await truffleAssert.reverts(
@@ -212,38 +254,46 @@ contract('BPool', async (accounts) => {
 
         it('Fails calling any swap before finalizing', async () => {
             await truffleAssert.reverts(
-                pool.swapExactAmountIn(WETH, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                // pool.swapExactAmountIn(WETH, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountIn(pool.address, WETH, toWei('2.5'), DAI, toWei('475'), toWei('200')),
                 'ERR_SWAP_NOT_PUBLIC',
             );
             await truffleAssert.reverts(
-                pool.swapExactAmountIn(DAI, toWei('2.5'), WETH, toWei('475'), toWei('200')),
+                // pool.swapExactAmountIn(DAI, toWei('2.5'), WETH, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountIn(pool.address, DAI, toWei('2.5'), WETH, toWei('475'), toWei('200')),
                 'ERR_SWAP_NOT_PUBLIC',
             );
             await truffleAssert.reverts(
-                pool.swapExactAmountOut(WETH, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                // pool.swapExactAmountOut(WETH, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountOut(pool.address, WETH, toWei('2.5'), DAI, toWei('475'), toWei('200')),
                 'ERR_SWAP_NOT_PUBLIC',
             );
             await truffleAssert.reverts(
-                pool.swapExactAmountOut(DAI, toWei('2.5'), WETH, toWei('475'), toWei('200')),
+                // pool.swapExactAmountOut(DAI, toWei('2.5'), WETH, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountOut(pool.address, DAI, toWei('2.5'), WETH, toWei('475'), toWei('200')),
                 'ERR_SWAP_NOT_PUBLIC',
             );
         });
 
         it('Fails calling any join exit swap before finalizing', async () => {
             await truffleAssert.reverts(
-                pool.joinswapExternAmountIn(WETH, toWei('2.5'), toWei('0')),
+                // pool.joinswapExternAmountIn(WETH, toWei('2.5'), toWei('0')),
+                exchangeProxy.joinswapExternAmountIn(pool.address, WETH, toWei('2.5'), toWei('0')),
                 'ERR_NOT_FINALIZED',
             );
             await truffleAssert.reverts(
-                pool.joinswapPoolAmountOut(WETH, toWei('2.5'), MAX),
+                // pool.joinswapPoolAmountOut(WETH, toWei('2.5'), MAX),
+                exchangeProxy.joinswapPoolAmountOut(pool.address, WETH, toWei('2.5'), MAX),
                 'ERR_NOT_FINALIZED',
             );
             await truffleAssert.reverts(
-                pool.exitswapPoolAmountIn(WETH, toWei('2.5'), toWei('0')),
+                // pool.exitswapPoolAmountIn(WETH, toWei('2.5'), toWei('0')),
+                exchangeProxy.exitswapPoolAmountIn(pool.address, WETH, toWei('2.5'), toWei('0')),
                 'ERR_NOT_FINALIZED',
             );
             await truffleAssert.reverts(
-                pool.exitswapExternAmountOut(WETH, toWei('2.5'), MAX),
+                // pool.exitswapExternAmountOut(WETH, toWei('2.5'), MAX),
+                exchangeProxy.exitswapExternAmountOut(pool.address, WETH, toWei('2.5'), MAX),
                 'ERR_NOT_FINALIZED',
             );
         });
@@ -341,18 +391,27 @@ contract('BPool', async (accounts) => {
     describe('User interactions', () => {
         it('Other users approve tokens', async () => {
             await weth.approve(POOL, MAX, { from: user1 });
+            await weth.approve(exchangeProxy.address, MAX, { from: user1 });
             await mkr.approve(POOL, MAX, { from: user1 });
+            await mkr.approve(exchangeProxy.address, MAX, { from: user1 });
             await dai.approve(POOL, MAX, { from: user1 });
+            await dai.approve(exchangeProxy.address, MAX, { from: user1 });
             await xxx.approve(POOL, MAX, { from: user1 });
+            await xxx.approve(exchangeProxy.address, MAX, { from: user1 });
 
             await weth.approve(POOL, MAX, { from: user2 });
+            await weth.approve(exchangeProxy.address, MAX, { from: user2 });
             await mkr.approve(POOL, MAX, { from: user2 });
+            await mkr.approve(exchangeProxy.address, MAX, { from: user2 });
             await dai.approve(POOL, MAX, { from: user2 });
+            await dai.approve(exchangeProxy.address, MAX, { from: user2 });
             await xxx.approve(POOL, MAX, { from: user2 });
+            await xxx.approve(exchangeProxy.address, MAX, { from: user2 });
         });
 
         it('User1 joins pool', async () => {
-            await pool.joinPool(toWei('5'), [MAX, MAX, MAX], { from: user1 });
+            // await pool.joinPool(toWei('5'), [MAX, MAX, MAX], { from: user1 });
+            await exchangeProxy.joinPool(pool.address, toWei('5'), [MAX, MAX, MAX], { from: user1 });
             const daiBalance = await pool.getBalance(DAI);
             assert.equal(10500, fromWei(daiBalance));
             const userWethBalance = await weth.balanceOf(user1);
@@ -383,11 +442,13 @@ contract('BPool', async (accounts) => {
 
         it('Fail swapExactAmountIn unbound or over min max ratios', async () => {
             await truffleAssert.reverts(
-                pool.swapExactAmountIn(WETH, toWei('2.5'), XXX, toWei('100'), toWei('200'), { from: user2 }),
+                // pool.swapExactAmountIn(WETH, toWei('2.5'), XXX, toWei('100'), toWei('200'), { from: user2 }),
+                exchangeProxy.swapExactAmountIn(pool.address, WETH, toWei('2.5'), XXX, toWei('100'), toWei('200'), { from: user2 }),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.swapExactAmountIn(WETH, toWei('26.5'), DAI, toWei('5000'), toWei('200'), { from: user2 }),
+                // pool.swapExactAmountIn(WETH, toWei('26.5'), DAI, toWei('5000'), toWei('200'), { from: user2 }),
+                exchangeProxy.swapExactAmountIn(pool.address, WETH, toWei('26.5'), DAI, toWei('5000'), toWei('200'), { from: user2 }),
                 'ERR_MAX_IN_RATIO',
             );
         });
@@ -395,7 +456,9 @@ contract('BPool', async (accounts) => {
         it('swapExactAmountIn', async () => {
             // 2.5 WETH -> DAI
             const expected = calcOutGivenIn(52.5, 5, 10500, 5, 2.5, 0.003);
-            const txr = await pool.swapExactAmountIn(
+            // const txr = await pool.swapExactAmountIn(
+            const txr = await exchangeProxy.swapExactAmountIn(
+                pool.address,
                 WETH,
                 toWei('2.5'),
                 DAI,
@@ -403,6 +466,7 @@ contract('BPool', async (accounts) => {
                 toWei('200'),
                 { from: user2 },
             );
+
             const log = txr.logs[0];
             assert.equal(log.event, 'LOG_SWAP');
             // 475.905805337091423
@@ -434,7 +498,9 @@ contract('BPool', async (accounts) => {
             // ETH -> 1 MKR
             // const amountIn = (55 * (((21 / (21 - 1)) ** (5 / 5)) - 1)) / (1 - 0.003);
             const expected = calcInGivenOut(55, 5, 21, 5, 1, 0.003);
-            const txr = await pool.swapExactAmountOut(
+            // const txr = await pool.swapExactAmountOut(
+            const txr = await exchangeProxy.swapExactAmountOut(
+                pool.address,
                 WETH,
                 toWei('3'),
                 MKR,
@@ -460,67 +526,81 @@ contract('BPool', async (accounts) => {
 
         it('Fails joins exits with limits', async () => {
             await truffleAssert.reverts(
-                pool.joinPool(toWei('10'), [toWei('1'), toWei('1'), toWei('1')]),
+                // pool.joinPool(toWei('10'), [toWei('1'), toWei('1'), toWei('1')]),
+                exchangeProxy.joinPool(pool.address, toWei('10'), [toWei('1'), toWei('1'), toWei('1')]),
                 'ERR_LIMIT_IN',
             );
 
             await truffleAssert.reverts(
-                pool.exitPool(toWei('10'), [toWei('10'), toWei('10'), toWei('10')]),
+                // pool.exitPool(toWei('10'), [toWei('10'), toWei('10'), toWei('10')]),
+                exchangeProxy.exitPool(pool.address, toWei('10'), [toWei('10'), toWei('10'), toWei('10')]),
                 'ERR_LIMIT_OUT',
             );
 
             await truffleAssert.reverts(
-                pool.joinswapExternAmountIn(DAI, toWei('100'), toWei('10')),
+                // pool.joinswapExternAmountIn(DAI, toWei('100'), toWei('10')),
+                exchangeProxy.joinswapExternAmountIn(pool.address, DAI, toWei('100'), toWei('10')),
                 'ERR_LIMIT_OUT',
             );
 
             await truffleAssert.reverts(
-                pool.joinswapPoolAmountOut(DAI, toWei('10'), toWei('100')),
+                // pool.joinswapPoolAmountOut(DAI, toWei('10'), toWei('100')),
+                exchangeProxy.joinswapPoolAmountOut(pool.address, DAI, toWei('10'), toWei('100')),
                 'ERR_LIMIT_IN',
             );
 
             await truffleAssert.reverts(
-                pool.exitswapPoolAmountIn(DAI, toWei('1'), toWei('1000')),
+                // pool.exitswapPoolAmountIn(DAI, toWei('1'), toWei('1000')),
+                exchangeProxy.exitswapPoolAmountIn(pool.address, DAI, toWei('1'), toWei('1000')),
                 'ERR_LIMIT_OUT',
             );
 
             await truffleAssert.reverts(
-                pool.exitswapExternAmountOut(DAI, toWei('1000'), toWei('1')),
+                // pool.exitswapExternAmountOut(DAI, toWei('1000'), toWei('1')),
+                exchangeProxy.exitswapExternAmountOut(pool.address, DAI, toWei('1000'), toWei('1')),
                 'ERR_LIMIT_IN',
             );
         });
 
         it('Fails calling any swap on unbound token', async () => {
             await truffleAssert.reverts(
-                pool.swapExactAmountIn(XXX, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                // pool.swapExactAmountIn(XXX, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountIn(pool.address, XXX, toWei('2.5'), DAI, toWei('475'), toWei('200')),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.swapExactAmountIn(DAI, toWei('2.5'), XXX, toWei('475'), toWei('200')),
+                // pool.swapExactAmountIn(DAI, toWei('2.5'), XXX, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountIn(pool.address, DAI, toWei('2.5'), XXX, toWei('475'), toWei('200')),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.swapExactAmountOut(XXX, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                // pool.swapExactAmountOut(XXX, toWei('2.5'), DAI, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountOut(pool.address, XXX, toWei('2.5'), DAI, toWei('475'), toWei('200')),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.swapExactAmountOut(DAI, toWei('2.5'), XXX, toWei('475'), toWei('200')),
+                // pool.swapExactAmountOut(DAI, toWei('2.5'), XXX, toWei('475'), toWei('200')),
+                exchangeProxy.swapExactAmountOut(pool.address, DAI, toWei('2.5'), XXX, toWei('475'), toWei('200')),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.joinswapExternAmountIn(XXX, toWei('2.5'), toWei('0')),
+                // pool.joinswapExternAmountIn(XXX, toWei('2.5'), toWei('0')),
+                exchangeProxy.joinswapExternAmountIn(pool.address, XXX, toWei('2.5'), toWei('0')),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.joinswapPoolAmountOut(XXX, toWei('2.5'), MAX),
+                // pool.joinswapPoolAmountOut(XXX, toWei('2.5'), MAX),
+                exchangeProxy.joinswapPoolAmountOut(pool.address, XXX, toWei('2.5'), MAX),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.exitswapPoolAmountIn(XXX, toWei('2.5'), toWei('0')),
+                // pool.exitswapPoolAmountIn(XXX, toWei('2.5'), toWei('0')),
+                exchangeProxy.exitswapPoolAmountIn(pool.address, XXX, toWei('2.5'), toWei('0')),
                 'ERR_NOT_BOUND',
             );
             await truffleAssert.reverts(
-                pool.exitswapExternAmountOut(XXX, toWei('2.5'), MAX),
+                // pool.exitswapExternAmountOut(XXX, toWei('2.5'), MAX),
+                exchangeProxy.exitswapExternAmountOut(pool.address, XXX, toWei('2.5'), MAX),
                 'ERR_NOT_BOUND',
             );
         });

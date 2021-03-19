@@ -11,28 +11,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-pragma solidity 0.5.12;
+pragma solidity ^0.7.0;
 
 import "./BNum.sol";
+import "./IERC20.sol";
+import "@openzeppelin/contracts/proxy/Initializable.sol";
 
-// Highly opinionated token implementation
-
-interface IERC20 {
-    event Approval(address indexed src, address indexed dst, uint amt);
-    event Transfer(address indexed src, address indexed dst, uint amt);
-
-    function totalSupply() external view returns (uint);
-    function balanceOf(address whom) external view returns (uint);
-    function allowance(address src, address dst) external view returns (uint);
-
-    function approve(address dst, uint amt) external returns (bool);
-    function transfer(address dst, uint amt) external returns (bool);
-    function transferFrom(
-        address src, address dst, uint amt
-    ) external returns (bool);
-}
-
-contract BTokenBase is BNum {
+abstract contract BTokenBase is BNum {
 
     mapping(address => uint)                   internal _balance;
     mapping(address => mapping(address=>uint)) internal _allowance;
@@ -70,11 +55,17 @@ contract BTokenBase is BNum {
     }
 }
 
-contract BToken is BTokenBase, IERC20 {
+abstract contract BToken is Initializable, BTokenBase, IERC20 {
 
     string  private _name     = "Balancer Pool Token";
     string  private _symbol   = "BPT";
     uint8   private _decimals = 18;
+
+    function __BToken_init_unchained() internal initializer {
+        _name     = "Balancer Pool Token";
+        _symbol   = "BPT";
+        _decimals = 18;
+    }
 
     function name() public view returns (string memory) {
         return _name;
@@ -88,19 +79,19 @@ contract BToken is BTokenBase, IERC20 {
         return _decimals;
     }
 
-    function allowance(address src, address dst) external view returns (uint) {
+    function allowance(address src, address dst) external override view returns (uint) {
         return _allowance[src][dst];
     }
 
-    function balanceOf(address whom) external view returns (uint) {
+    function balanceOf(address whom) external override view returns (uint) {
         return _balance[whom];
     }
 
-    function totalSupply() public view returns (uint) {
+    function totalSupply() public override view returns (uint) {
         return _totalSupply;
     }
 
-    function approve(address dst, uint amt) external returns (bool) {
+    function approve(address dst, uint amt) external override returns (bool) {
         _allowance[msg.sender][dst] = amt;
         emit Approval(msg.sender, dst, amt);
         return true;
@@ -123,12 +114,12 @@ contract BToken is BTokenBase, IERC20 {
         return true;
     }
 
-    function transfer(address dst, uint amt) external returns (bool) {
+    function transfer(address dst, uint amt) external override returns (bool) {
         _move(msg.sender, dst, amt);
         return true;
     }
 
-    function transferFrom(address src, address dst, uint amt) external returns (bool) {
+    function transferFrom(address src, address dst, uint amt) external override returns (bool) {
         require(msg.sender == src || amt <= _allowance[src][msg.sender], "ERR_BTOKEN_BAD_CALLER");
         _move(src, dst, amt);
         if (msg.sender != src && _allowance[src][msg.sender] != uint256(-1)) {

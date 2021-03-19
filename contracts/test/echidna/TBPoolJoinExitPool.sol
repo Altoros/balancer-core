@@ -1,6 +1,6 @@
 import "../../BNum.sol";
 
-pragma solidity 0.5.12;
+pragma solidity ^0.7.0;
 
 //  This test is similar to TBPoolJoin but with an exit fee
 contract TBPoolJoinExit is BNum {
@@ -51,15 +51,15 @@ contract TBPoolJoinExit is BNum {
         poolTotal = badd(poolTotal, poolAmountOut);
         _records_t_balance = badd(_records_t_balance, tokenAmountIn);
 
-        require(tokenAmountIn > 0); // prevent triggering the free token generation from joinPool 
+        require(tokenAmountIn > 0); // prevent triggering the free token generation from joinPool
 
         require(poolTotal >= poolAmountIn);
         uint tokenAmountOut = exitPool(poolAmountIn, poolTotal, _records_t_balance);
         require(_records_t_balance >= tokenAmountOut);
 
-        // We try to generate free pool share 
-        require(poolAmountOut > poolAmountIn); 
-        require(tokenAmountOut == tokenAmountIn); 
+        // We try to generate free pool share
+        require(poolAmountOut > poolAmountIn);
+        require(tokenAmountOut == tokenAmountIn);
         echidna_no_bug_found = false;
     }
 

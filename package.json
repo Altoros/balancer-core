@@ -11,7 +11,16 @@
         "test:verbose": "VERBOSE=true truffle test",
         "coverage": "yarn solidity-coverage",
         "lint": "eslint .",
-        "lint:contracts": "solhint contracts/*.sol"
+        "lint:contracts": "solhint contracts/*.sol",
+        "size": "truffle run contract-size",
+        "migrate": "truffle migrate",
+        "deploy:rinkeby": "yarn migrate --network rinkeby",
+        "deploy:kovan": "yarn migrate --network kovan",
+        "deploy:mainnet": "yarn migrate --network mainnet",
+        "verify:kovan": "truffle run verify BFactory BPool --network kovan",
+        "verify:pool:kovan": "truffle run verify BPoolExtend@0x66f47ae30b4d78e3a6f40d0e42f59af983f992dc --network kovan",
+        "flatten": "bash scripts/flatten.sh",
+        "verify:hard": "hardhat verify --network kovan --constructor-args args.js 0x66f47ae30b4d78e3a6f40d0e42f59af983f992dc --show-stack-traces"
     },
     "repository": {
         "type": "git",
@@ -22,8 +31,11 @@
     },
     "homepage": "https://github.com/balancer-labs/balancer-core#readme",
     "devDependencies": {
+        "@openzeppelin/contracts": "3.4.0-solc-0.7",
+        "@truffle/hdwallet-provider": "^1.2.3",
         "chai": "^4.2.0",
         "coveralls": "^3.0.8",
+        "dotenv": "^8.2.0",
         "eslint": "^6.7.1",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-plugin-import": "^2.18.2",
@@ -34,8 +46,12 @@
         "solhint": "^2.3.0",
         "solidity-coverage": "^0.6.7",
         "standard": "^14.0.2",
-        "truffle": "^5.0.41",
+        "swarm-smart-contracts": "Altoros/swarm-markets-smart-contracts",
+        "truffle": "^5.2.2",
         "truffle-assertions": "^0.9.1",
+        "truffle-contract-size": "2.0.1",
+        "truffle-flattener": "^1.5.0",
+        "truffle-plugin-verify": "^0.5.6",
         "web3": "^1.2.0"
     },
     "dependencies": {
