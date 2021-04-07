@@ -39,8 +39,26 @@ contract('BFactory', async (accounts) => {
             authorization = await AuthorizationMock.deployed()
             permissionManager = await PermissionManagerMock.deployed()
 
-            await factory.setExchProxy(exchangeProxy.address)
             await factory.setAuthorization(authorization.address)
+        });
+
+        it('BFactory is bronze release', async () => {
+            const color = await factory.getColor();
+            assert.equal(hexToUtf8(color), 'BRONZE');
+        });
+
+        it('should not create pool if _operationsRegistry is not initilized', async () => {
+            await truffleAssert.reverts(factory.newBPool(), 'ERR_OP_REG_NOT_INITIALIZED');
+        });
+
+        it('should not create pool if _exchProxy is not initilized', async () => {
+            await factory.setOperationsRegistry(operationsRegistry.address)
+            await truffleAssert.reverts(factory.newBPool(), 'ERR_EXCH_PROXY_NOT_INITIALIZED');
+        });
+
+        it('should not create pool if _exchProxy is not initilized', async () => {
+            await factory.setExchProxy(exchangeProxy.address)
+            await truffleAssert.reverts(factory.newBPool(), 'ERR_PERM_MAN_NOT_INITIALIZED');
             await factory.setPermissionManager(permissionManager.address)
 
             weth = await TToken.new('Wrapped Ether', 'WETH', 18);
@@ -51,8 +69,6 @@ contract('BFactory', async (accounts) => {
 
             await operationsRegistry.allowAsset(WETH)
             await operationsRegistry.allowAsset(DAI)
-
-            await factory.setOperationsRegistry(operationsRegistry.address)
 
             // admin balances
             await weth.mint(admin, toWei('5'));
@@ -73,11 +89,6 @@ contract('BFactory', async (accounts) => {
             await dai.approve(exchangeProxy.address, MAX, { from: nonAdmin });
 
             await pool.approve(exchangeProxy.address, MAX, { from: nonAdmin });
-        });
-
-        it('BFactory is bronze release', async () => {
-            const color = await factory.getColor();
-            assert.equal(hexToUtf8(color), 'BRONZE');
         });
 
         it('isBPool on non pool returns false', async () => {

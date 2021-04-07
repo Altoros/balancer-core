@@ -73,6 +73,9 @@ contract BFactory is BBronze, Authorizable {
         onlyAuthorized
         returns (BPoolExtend)
     {
+        require(_operationsRegistry != address(0), "ERR_OP_REG_NOT_INITIALIZED");
+        require(_exchProxy != address(0), "ERR_EXCH_PROXY_NOT_INITIALIZED");
+        require(_permissionManager != address(0), "ERR_PERM_MAN_NOT_INITIALIZED");
         BPoolExtend bpool = new BPoolExtend(_poolImpl, _operationsRegistry, _exchProxy, abi.encodeWithSignature("initialize()"));
         _isBPool[address(bpool)] = true;
         emit LOG_NEW_POOL(msg.sender, address(bpool));

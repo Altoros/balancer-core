@@ -21,24 +21,62 @@ interface IOperationsRegistry {
     function allowedAssets(address asset) external view returns (bool);
 }
 
+interface IBPool {
+    function bind(
+        address token,
+        uint256 balance,
+        uint256 denorm
+    ) external;
+
+    function joinPool(uint256 poolAmountOut, uint256[] calldata maxAmountsIn) external;
+
+    function exitPool(uint256 poolAmountIn, uint256[] calldata minAmountsOut) external;
+
+    function swapExactAmountIn(
+        address tokenIn,
+        uint256 tokenAmountIn,
+        address tokenOut,
+        uint256 minAmountOut,
+        uint256 maxPrice
+    ) external returns (uint256 tokenAmountOut, uint256 spotPriceAfter);
+
+    function swapExactAmountOut(
+        address tokenIn,
+        uint256 maxAmountIn,
+        address tokenOut,
+        uint256 tokenAmountOut,
+        uint256 maxPrice
+    ) external returns (uint256 tokenAmountIn, uint256 spotPriceAfter);
+
+    function joinswapExternAmountIn(
+        address tokenIn,
+        uint256 tokenAmountIn,
+        uint256 minPoolAmountOut
+    ) external returns (uint256 poolAmountOut);
+
+    function joinswapPoolAmountOut(
+        address tokenIn,
+        uint256 poolAmountOut,
+        uint256 maxAmountIn
+    ) external returns (uint256 tokenAmountIn);
+
+    function exitswapPoolAmountIn(
+        address tokenOut,
+        uint256 poolAmountIn,
+        uint256 minAmountOut
+    ) external returns (uint256 tokenAmountOut);
+
+    function exitswapExternAmountOut(
+        address tokenOut,
+        uint256 tokenAmountOut,
+        uint256 maxPoolAmountIn
+    ) external returns (uint256 poolAmountIn);
+}
+
 contract BPoolExtend is Proxy, ERC1155Holder {
     address public immutable implementation;
     address public immutable exchangeProxy;
     address public immutable operationsRegistry;
-
-    bytes4 internal constant JOIN_POOL = 0x4f69c0d4; // joinPool(uint256,uint256[])
-    bytes4 internal constant EXIT_POOL = 0xb02f0b73; //exitPool(uint256,uint256[])
-    bytes4 internal constant SWAP_EXACT_AMOUNT_IN = 0x8201aa3f; //swapExactAmountIn(address,uint256,address,uint256,uint256)
-    bytes4 internal constant SWAP_EXACT_AMOUNT_OUT = 0x7c5e9ea4; //swapExactAmountOut(address,uint256,address,uint256,uint256)
-    bytes4 internal constant JOINSWAP_EXTERN_AMOUNT_IN = 0x5db34277; //joinswapExternAmountIn(address,uint256,uint256)
-    bytes4 internal constant JOINSWAP_POOL_AMOUNT_OUT = 0x6d06dfa0; //joinswapPoolAmountOut(address,uint256,uint256)
-    bytes4 internal constant EXITSWAP_POOL_AMOUNT_IN = 0x46ab38f1; //exitswapPoolAmountIn(address,uint256,uint256)
-    bytes4 internal constant EXITSWAP_EXTERN_AMOUNT_OUT = 0x02c96748; //exitswapExternAmountOut(address,uint256,uint256)
-    bytes4 internal constant BIND = 0xe4e1e538; //bind(address,uint256,uint256)
-
-     event LOG(
-        bytes4 sig
-    );
 
     constructor(address _poolImpl, address _operationsRegistry, address _exchProxy, bytes memory _data) {
         implementation = _poolImpl;
@@ -61,21 +99,21 @@ contract BPoolExtend is Proxy, ERC1155Holder {
 
     function _onlyExchangeProxy() internal view {
         if (
-           msg.sig == JOIN_POOL ||
-           msg.sig == EXIT_POOL ||
-           msg.sig == SWAP_EXACT_AMOUNT_IN ||
-           msg.sig == SWAP_EXACT_AMOUNT_OUT ||
-           msg.sig == JOINSWAP_EXTERN_AMOUNT_IN ||
-           msg.sig == JOINSWAP_POOL_AMOUNT_OUT ||
-           msg.sig == EXITSWAP_POOL_AMOUNT_IN ||
-           msg.sig == EXITSWAP_EXTERN_AMOUNT_OUT
+           msg.sig == IBPool.joinPool.selector ||
+           msg.sig == IBPool.exitPool.selector ||
+           msg.sig == IBPool.swapExactAmountIn.selector ||
+           msg.sig == IBPool.swapExactAmountOut.selector ||
+           msg.sig == IBPool.joinswapExternAmountIn.selector ||
+           msg.sig == IBPool.joinswapPoolAmountOut.selector ||
+           msg.sig == IBPool.exitswapPoolAmountIn.selector ||
+           msg.sig == IBPool.exitswapExternAmountOut.selector
         ) {
             require(msg.sender == exchangeProxy, "ERR_NOT_EXCHANGE_PROXY");
        }
     }
 
     function _onlyAllowedToken() internal view {
-        if (msg.sig == BIND) {
+        if (msg.sig == IBPool.bind.selector) {
             (address token, , ) = abi.decode(msg.data[4:], (address, address, uint256));
             require(IOperationsRegistry(operationsRegistry).allowedAssets(token), "ERR_NOT_ALLOWED_TOKEN");
         }
