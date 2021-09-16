@@ -57,6 +57,17 @@ module.exports = {
             gasPrice: GAS_PRICE,
             timeoutBlocks: 200,
         },
+        mumbai: {
+            /*provider: () => new HDWalletProvider({
+                mnemonic: MNEMONIC,
+                providerOrUrl: `https://rpc-mumbai.matic.today`
+            }),*/
+            provider: () => new HDWalletProvider(MNEMONIC, `https://matic-mumbai.chainstacklabs.com`),
+            network_id: 80001,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true
+          },
     },
     // Configure your compilers
     compilers: {

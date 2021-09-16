@@ -15,18 +15,18 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getColor\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol\":\"BBronze\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol\":{\"keccak256\":\"0xba0ec718cee507dce08b3b32f65f8a1fa67bcf0ab5759be02e7aa081beb19dbd\",\"urls\":[\"bzz-raw://aa4047e986ffd7d5b264145abe991256dbb6d92549679c93c98013885076e88f\",\"dweb:/ipfs/QmTiQVaN6CBJz72aBmfo7UDU5ypSP3qEhiTgSJqWUwNtQH\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b5060888061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80639a86139b14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b6542524f4e5a4560d01b9056fea26469706673582212203aa8a199bd94f4016096847c536321ba76992a743198546cab1dba8dd871de0864736f6c63430007040033",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80639a86139b14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b6542524f4e5a4560d01b9056fea26469706673582212203aa8a199bd94f4016096847c536321ba76992a743198546cab1dba8dd871de0864736f6c63430007040033",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getColor\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol\":\"BBronze\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol\":{\"keccak256\":\"0xba0ec718cee507dce08b3b32f65f8a1fa67bcf0ab5759be02e7aa081beb19dbd\",\"urls\":[\"bzz-raw://aa4047e986ffd7d5b264145abe991256dbb6d92549679c93c98013885076e88f\",\"dweb:/ipfs/QmTiQVaN6CBJz72aBmfo7UDU5ypSP3qEhiTgSJqWUwNtQH\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5060888061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80639a86139b14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b6542524f4e5a4560d01b9056fea2646970667358221220a31558d81ccad2895aff1052a5b0535e283cd047af57cfec9327fabd05dea09364736f6c63430007040033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80639a86139b14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b6542524f4e5a4560d01b9056fea2646970667358221220a31558d81ccad2895aff1052a5b0535e283cd047af57cfec9327fabd05dea09364736f6c63430007040033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "779:161:0:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "779:161:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;812:126;;;:::i;:::-;;;;;;;;;;;;;;;;;-1:-1:-1;;;812:126:0;:::o",
   "source": "// This program is free software: you can redistribute it and/or modify\n// it under the terms of the GNU General Public License as published by\n// the Free Software Foundation, either version 3 of the License, or\n// (at your option) any later version.\n\n// This program is distributed in the hope that it will be useful,\n// but WITHOUT ANY WARRANTY; without even the implied warranty of\n// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n// GNU General Public License for more details.\n\n// You should have received a copy of the GNU General Public License\n// along with this program.  If not, see <http://www.gnu.org/licenses/>.\n\npragma solidity ^0.7.0;\n\nabstract contract BColor {\n    function getColor()\n        external virtual view\n        returns (bytes32);\n}\n\ncontract BBronze is BColor {\n    function getColor()\n        external override view\n        returns (bytes32) {\n            return bytes32(\"BRONZE\");\n        }\n}\n",
-  "sourcePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol",
+  "sourcePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol",
   "ast": {
-    "absolutePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol",
+    "absolutePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol",
     "exportedSymbols": {
       "BBronze": [
         22
@@ -296,7 +296,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol",
+      "absolutePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol",
       "exportedSymbols": {
         "BBronze": [
           22
@@ -616,7 +616,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-03-19T20:25:55.974Z",
+  "updatedAt": "2021-09-16T16:04:33.851Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

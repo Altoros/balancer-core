@@ -15,7 +15,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getColor\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol\":\"BColor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol\":{\"keccak256\":\"0xba0ec718cee507dce08b3b32f65f8a1fa67bcf0ab5759be02e7aa081beb19dbd\",\"urls\":[\"bzz-raw://aa4047e986ffd7d5b264145abe991256dbb6d92549679c93c98013885076e88f\",\"dweb:/ipfs/QmTiQVaN6CBJz72aBmfo7UDU5ypSP3qEhiTgSJqWUwNtQH\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getColor\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol\":\"BColor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol\":{\"keccak256\":\"0xba0ec718cee507dce08b3b32f65f8a1fa67bcf0ab5759be02e7aa081beb19dbd\",\"urls\":[\"bzz-raw://aa4047e986ffd7d5b264145abe991256dbb6d92549679c93c98013885076e88f\",\"dweb:/ipfs/QmTiQVaN6CBJz72aBmfo7UDU5ypSP3qEhiTgSJqWUwNtQH\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -24,9 +24,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// This program is free software: you can redistribute it and/or modify\n// it under the terms of the GNU General Public License as published by\n// the Free Software Foundation, either version 3 of the License, or\n// (at your option) any later version.\n\n// This program is distributed in the hope that it will be useful,\n// but WITHOUT ANY WARRANTY; without even the implied warranty of\n// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n// GNU General Public License for more details.\n\n// You should have received a copy of the GNU General Public License\n// along with this program.  If not, see <http://www.gnu.org/licenses/>.\n\npragma solidity ^0.7.0;\n\nabstract contract BColor {\n    function getColor()\n        external virtual view\n        returns (bytes32);\n}\n\ncontract BBronze is BColor {\n    function getColor()\n        external override view\n        returns (bytes32) {\n            return bytes32(\"BRONZE\");\n        }\n}\n",
-  "sourcePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol",
+  "sourcePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol",
   "ast": {
-    "absolutePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol",
+    "absolutePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol",
     "exportedSymbols": {
       "BBronze": [
         22
@@ -296,7 +296,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/BColor.sol",
+      "absolutePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/BColor.sol",
       "exportedSymbols": {
         "BBronze": [
           22
@@ -616,7 +616,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-03-19T20:25:55.974Z",
+  "updatedAt": "2021-09-16T16:04:33.852Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -42,21 +42,21 @@
     "absolutePath": "swarm-smart-contracts/contracts/authorization/Authorizable.sol",
     "exportedSymbols": {
       "Authorizable": [
-        8906
+        9024
       ],
       "Context": [
-        8842
+        8960
       ],
       "IAuthorization": [
-        8956
+        9074
       ]
     },
-    "id": 8907,
+    "id": 9025,
     "license": "Unlicense",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 8844,
+        "id": 8962,
         "literals": [
           "solidity",
           "^",
@@ -69,10 +69,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/GSN/Context.sol",
         "file": "@openzeppelin/contracts/GSN/Context.sol",
-        "id": 8845,
+        "id": 8963,
         "nodeType": "ImportDirective",
-        "scope": 8907,
-        "sourceUnit": 6711,
+        "scope": 9025,
+        "sourceUnit": 6829,
         "src": "62:49:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -80,10 +80,10 @@
       {
         "absolutePath": "swarm-smart-contracts/contracts/authorization/IAuthorization.sol",
         "file": "./IAuthorization.sol",
-        "id": 8846,
+        "id": 8964,
         "nodeType": "ImportDirective",
-        "scope": 8907,
-        "sourceUnit": 8957,
+        "scope": 9025,
+        "sourceUnit": 9075,
         "src": "112:30:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -93,36 +93,36 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 8848,
+              "id": 8966,
               "name": "Context",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 8842,
+              "referencedDeclaration": 8960,
               "src": "463:7:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Context_$8842",
+                "typeIdentifier": "t_contract$_Context_$8960",
                 "typeString": "contract Context"
               }
             },
-            "id": 8849,
+            "id": 8967,
             "nodeType": "InheritanceSpecifier",
             "src": "463:7:34"
           }
         ],
         "contractDependencies": [
-          8842
+          8960
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 8847,
+          "id": 8965,
           "nodeType": "StructuredDocumentation",
           "src": "144:284:34",
           "text": " @title Authorizable\n @author Protofire\n @dev Contract module which provides an authorization mechanism.\n This module is used through inheritance. It will make available the modifier\n `onlyAuthorized`, which can be applied to your functions to restrict their use."
         },
         "fullyImplemented": true,
-        "id": 8906,
+        "id": 9024,
         "linearizedBaseContracts": [
-          8906,
-          8842
+          9024,
+          8960
         ],
         "name": "Authorizable",
         "nodeType": "ContractDefinition",
@@ -130,26 +130,26 @@
           {
             "constant": false,
             "functionSelector": "3817c86c",
-            "id": 8851,
+            "id": 8969,
             "mutability": "mutable",
             "name": "authorization",
             "nodeType": "VariableDeclaration",
-            "scope": 8906,
+            "scope": 9024,
             "src": "477:35:34",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IAuthorization_$8956",
+              "typeIdentifier": "t_contract$_IAuthorization_$9074",
               "typeString": "contract IAuthorization"
             },
             "typeName": {
-              "id": 8850,
+              "id": 8968,
               "name": "IAuthorization",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 8956,
+              "referencedDeclaration": 9074,
               "src": "477:14:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IAuthorization_$8956",
+                "typeIdentifier": "t_contract$_IAuthorization_$9074",
                 "typeString": "contract IAuthorization"
               }
             },
@@ -158,26 +158,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 8852,
+              "id": 8970,
               "nodeType": "StructuredDocumentation",
               "src": "519:71:34",
               "text": " @dev Emitted when `authorization` address is setted."
             },
-            "id": 8856,
+            "id": 8974,
             "name": "AuthorizationSetted",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 8855,
+              "id": 8973,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 8854,
+                  "id": 8972,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "newAuthorization",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8856,
+                  "scope": 8974,
                   "src": "621:32:34",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -186,7 +186,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 8853,
+                    "id": 8971,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "621:7:34",
@@ -205,7 +205,7 @@
           },
           {
             "body": {
-              "id": 8877,
+              "id": 8995,
               "nodeType": "Block",
               "src": "799:179:34",
               "statements": [
@@ -218,18 +218,18 @@
                             "arguments": [],
                             "expression": {
                               "argumentTypes": [],
-                              "id": 8862,
+                              "id": 8980,
                               "name": "_msgSender",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 8830,
+                              "referencedDeclaration": 8948,
                               "src": "857:10:34",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_address_payable_$",
                                 "typeString": "function () view returns (address payable)"
                               }
                             },
-                            "id": 8863,
+                            "id": 8981,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -247,14 +247,14 @@
                           {
                             "arguments": [
                               {
-                                "id": 8866,
+                                "id": 8984,
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": -28,
                                 "src": "879:4:34",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_Authorizable_$8906",
+                                  "typeIdentifier": "t_contract$_Authorizable_$9024",
                                   "typeString": "contract Authorizable"
                                 }
                               }
@@ -262,11 +262,11 @@
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_Authorizable_$8906",
+                                  "typeIdentifier": "t_contract$_Authorizable_$9024",
                                   "typeString": "contract Authorizable"
                                 }
                               ],
-                              "id": 8865,
+                              "id": 8983,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -278,14 +278,14 @@
                                 "typeString": "type(address)"
                               },
                               "typeName": {
-                                "id": 8864,
+                                "id": 8982,
                                 "name": "address",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "871:7:34",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 8867,
+                            "id": 8985,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -302,7 +302,7 @@
                           },
                           {
                             "expression": {
-                              "id": 8868,
+                              "id": 8986,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
@@ -313,7 +313,7 @@
                                 "typeString": "msg"
                               }
                             },
-                            "id": 8869,
+                            "id": 8987,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -330,18 +330,18 @@
                             "arguments": [],
                             "expression": {
                               "argumentTypes": [],
-                              "id": 8870,
+                              "id": 8988,
                               "name": "_msgData",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 8841,
+                              "referencedDeclaration": 8959,
                               "src": "895:8:34",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_bytes_memory_ptr_$",
                                 "typeString": "function () view returns (bytes memory)"
                               }
                             },
-                            "id": 8871,
+                            "id": 8989,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -377,32 +377,32 @@
                             }
                           ],
                           "expression": {
-                            "id": 8860,
+                            "id": 8978,
                             "name": "authorization",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 8851,
+                            "referencedDeclaration": 8969,
                             "src": "830:13:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_IAuthorization_$8956",
+                              "typeIdentifier": "t_contract$_IAuthorization_$9074",
                               "typeString": "contract IAuthorization"
                             }
                           },
-                          "id": 8861,
+                          "id": 8979,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "isAuthorized",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 8955,
+                          "referencedDeclaration": 9073,
                           "src": "830:26:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_bytes4_$_t_bytes_memory_ptr_$returns$_t_bool_$",
                             "typeString": "function (address,address,bytes4,bytes memory) external returns (bool)"
                           }
                         },
-                        "id": 8872,
+                        "id": 8990,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -419,7 +419,7 @@
                       },
                       {
                         "hexValue": "417574686f72697a61626c653a206e6f7420617574686f72697a6564",
-                        "id": 8873,
+                        "id": 8991,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -445,7 +445,7 @@
                           "typeString": "literal_string \"Authorizable: not authorized\""
                         }
                       ],
-                      "id": 8859,
+                      "id": 8977,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -459,7 +459,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 8874,
+                    "id": 8992,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -474,28 +474,28 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 8875,
+                  "id": 8993,
                   "nodeType": "ExpressionStatement",
                   "src": "809:151:34"
                 },
                 {
-                  "id": 8876,
+                  "id": 8994,
                   "nodeType": "PlaceholderStatement",
                   "src": "970:1:34"
                 }
               ]
             },
             "documentation": {
-              "id": 8857,
+              "id": 8975,
               "nodeType": "StructuredDocumentation",
               "src": "661:107:34",
               "text": " @dev Throws if called by any account which is not authorized to execute the transaction."
             },
-            "id": 8878,
+            "id": 8996,
             "name": "onlyAuthorized",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 8858,
+              "id": 8976,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "796:2:34"
@@ -506,7 +506,7 @@
           },
           {
             "body": {
-              "id": 8904,
+              "id": 9022,
               "nodeType": "Block",
               "src": "1099:211:34",
               "statements": [
@@ -518,17 +518,17 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-                        "id": 8890,
+                        "id": 9008,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
-                          "id": 8885,
+                          "id": 9003,
                           "name": "authorization_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8881,
+                          "referencedDeclaration": 8999,
                           "src": "1117:14:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -541,7 +541,7 @@
                           "arguments": [
                             {
                               "hexValue": "30",
-                              "id": 8888,
+                              "id": 9006,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -563,7 +563,7 @@
                                 "typeString": "int_const 0"
                               }
                             ],
-                            "id": 8887,
+                            "id": 9005,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -575,14 +575,14 @@
                               "typeString": "type(address)"
                             },
                             "typeName": {
-                              "id": 8886,
+                              "id": 9004,
                               "name": "address",
                               "nodeType": "ElementaryTypeName",
                               "src": "1135:7:34",
                               "typeDescriptions": {}
                             }
                           },
-                          "id": 8889,
+                          "id": 9007,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -605,7 +605,7 @@
                       },
                       {
                         "hexValue": "417574686f72697a61626c653a20617574686f72697a6174696f6e20697320746865207a65726f2061646472657373",
-                        "id": 8891,
+                        "id": 9009,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -631,7 +631,7 @@
                           "typeString": "literal_string \"Authorizable: authorization is the zero address\""
                         }
                       ],
-                      "id": 8884,
+                      "id": 9002,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -645,7 +645,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 8892,
+                    "id": 9010,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -660,26 +660,26 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 8893,
+                  "id": 9011,
                   "nodeType": "ExpressionStatement",
                   "src": "1109:88:34"
                 },
                 {
                   "expression": {
-                    "id": 8898,
+                    "id": 9016,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 8894,
+                      "id": 9012,
                       "name": "authorization",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 8851,
+                      "referencedDeclaration": 8969,
                       "src": "1207:13:34",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IAuthorization_$8956",
+                        "typeIdentifier": "t_contract$_IAuthorization_$9074",
                         "typeString": "contract IAuthorization"
                       }
                     },
@@ -688,11 +688,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 8896,
+                          "id": 9014,
                           "name": "authorization_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8881,
+                          "referencedDeclaration": 8999,
                           "src": "1238:14:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -707,18 +707,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 8895,
+                        "id": 9013,
                         "name": "IAuthorization",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 8956,
+                        "referencedDeclaration": 9074,
                         "src": "1223:14:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IAuthorization_$8956_$",
+                          "typeIdentifier": "t_type$_t_contract$_IAuthorization_$9074_$",
                           "typeString": "type(contract IAuthorization)"
                         }
                       },
-                      "id": 8897,
+                      "id": 9015,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -729,17 +729,17 @@
                       "src": "1223:30:34",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IAuthorization_$8956",
+                        "typeIdentifier": "t_contract$_IAuthorization_$9074",
                         "typeString": "contract IAuthorization"
                       }
                     },
                     "src": "1207:46:34",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IAuthorization_$8956",
+                      "typeIdentifier": "t_contract$_IAuthorization_$9074",
                       "typeString": "contract IAuthorization"
                     }
                   },
-                  "id": 8899,
+                  "id": 9017,
                   "nodeType": "ExpressionStatement",
                   "src": "1207:46:34"
                 },
@@ -747,11 +747,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 8901,
+                        "id": 9019,
                         "name": "authorization_",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 8881,
+                        "referencedDeclaration": 8999,
                         "src": "1288:14:34",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -766,18 +766,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 8900,
+                      "id": 9018,
                       "name": "AuthorizationSetted",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 8856,
+                      "referencedDeclaration": 8974,
                       "src": "1268:19:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 8902,
+                    "id": 9020,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -792,35 +792,35 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 8903,
+                  "id": 9021,
                   "nodeType": "EmitStatement",
                   "src": "1263:40:34"
                 }
               ]
             },
             "documentation": {
-              "id": 8879,
+              "id": 8997,
               "nodeType": "StructuredDocumentation",
               "src": "984:50:34",
               "text": " @dev Sets authorization."
             },
-            "id": 8905,
+            "id": 9023,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_setAuthorization",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 8882,
+              "id": 9000,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 8881,
+                  "id": 8999,
                   "mutability": "mutable",
                   "name": "authorization_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8905,
+                  "scope": 9023,
                   "src": "1066:22:34",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -829,7 +829,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 8880,
+                    "id": 8998,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1066:7:34",
@@ -845,19 +845,19 @@
               "src": "1065:24:34"
             },
             "returnParameters": {
-              "id": 8883,
+              "id": 9001,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1099:0:34"
             },
-            "scope": 8906,
+            "scope": 9024,
             "src": "1039:271:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 8907,
+        "scope": 9025,
         "src": "429:883:34"
       }
     ],
@@ -868,13 +868,13 @@
       "absolutePath": "swarm-smart-contracts/contracts/authorization/Authorizable.sol",
       "exportedSymbols": {
         "Authorizable": [
-          8906
+          9024
         ],
         "Context": [
-          8842
+          8960
         ],
         "IAuthorization": [
-          8956
+          9074
         ]
       },
       "license": "Unlicense"
@@ -889,37 +889,37 @@
             ".0"
           ]
         },
-        "id": 8844,
+        "id": 8962,
         "name": "PragmaDirective",
         "src": "37:23:34"
       },
       {
         "attributes": {
-          "SourceUnit": 6711,
+          "SourceUnit": 6829,
           "absolutePath": "@openzeppelin/contracts/GSN/Context.sol",
           "file": "@openzeppelin/contracts/GSN/Context.sol",
-          "scope": 8907,
+          "scope": 9025,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 8845,
+        "id": 8963,
         "name": "ImportDirective",
         "src": "62:49:34"
       },
       {
         "attributes": {
-          "SourceUnit": 8957,
+          "SourceUnit": 9075,
           "absolutePath": "swarm-smart-contracts/contracts/authorization/IAuthorization.sol",
           "file": "./IAuthorization.sol",
-          "scope": 8907,
+          "scope": 9025,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 8846,
+        "id": 8964,
         "name": "ImportDirective",
         "src": "112:30:34"
       },
@@ -927,23 +927,23 @@
         "attributes": {
           "abstract": true,
           "contractDependencies": [
-            8842
+            8960
           ],
           "contractKind": "contract",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            8906,
-            8842
+            9024,
+            8960
           ],
           "name": "Authorizable",
-          "scope": 8907
+          "scope": 9025
         },
         "children": [
           {
             "attributes": {
               "text": " @title Authorizable\n @author Protofire\n @dev Contract module which provides an authorization mechanism.\n This module is used through inheritance. It will make available the modifier\n `onlyAuthorized`, which can be applied to your functions to restrict their use."
             },
-            "id": 8847,
+            "id": 8965,
             "name": "StructuredDocumentation",
             "src": "144:284:34"
           },
@@ -953,15 +953,15 @@
               {
                 "attributes": {
                   "name": "Context",
-                  "referencedDeclaration": 8842,
+                  "referencedDeclaration": 8960,
                   "type": "contract Context"
                 },
-                "id": 8848,
+                "id": 8966,
                 "name": "UserDefinedTypeName",
                 "src": "463:7:34"
               }
             ],
-            "id": 8849,
+            "id": 8967,
             "name": "InheritanceSpecifier",
             "src": "463:7:34"
           },
@@ -971,7 +971,7 @@
               "functionSelector": "3817c86c",
               "mutability": "mutable",
               "name": "authorization",
-              "scope": 8906,
+              "scope": 9024,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "contract IAuthorization",
@@ -981,15 +981,15 @@
               {
                 "attributes": {
                   "name": "IAuthorization",
-                  "referencedDeclaration": 8956,
+                  "referencedDeclaration": 9074,
                   "type": "contract IAuthorization"
                 },
-                "id": 8850,
+                "id": 8968,
                 "name": "UserDefinedTypeName",
                 "src": "477:14:34"
               }
             ],
-            "id": 8851,
+            "id": 8969,
             "name": "VariableDeclaration",
             "src": "477:35:34"
           },
@@ -1003,7 +1003,7 @@
                 "attributes": {
                   "text": " @dev Emitted when `authorization` address is setted."
                 },
-                "id": 8852,
+                "id": 8970,
                 "name": "StructuredDocumentation",
                 "src": "519:71:34"
               },
@@ -1015,7 +1015,7 @@
                       "indexed": true,
                       "mutability": "mutable",
                       "name": "newAuthorization",
-                      "scope": 8856,
+                      "scope": 8974,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1028,22 +1028,22 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 8853,
+                        "id": 8971,
                         "name": "ElementaryTypeName",
                         "src": "621:7:34"
                       }
                     ],
-                    "id": 8854,
+                    "id": 8972,
                     "name": "VariableDeclaration",
                     "src": "621:32:34"
                   }
                 ],
-                "id": 8855,
+                "id": 8973,
                 "name": "ParameterList",
                 "src": "620:34:34"
               }
             ],
-            "id": 8856,
+            "id": 8974,
             "name": "EventDefinition",
             "src": "595:60:34"
           },
@@ -1058,7 +1058,7 @@
                 "attributes": {
                   "text": " @dev Throws if called by any account which is not authorized to execute the transaction."
                 },
-                "id": 8857,
+                "id": 8975,
                 "name": "StructuredDocumentation",
                 "src": "661:107:34"
               },
@@ -1069,7 +1069,7 @@
                   ]
                 },
                 "children": [],
-                "id": 8858,
+                "id": 8976,
                 "name": "ParameterList",
                 "src": "796:2:34"
               },
@@ -1112,7 +1112,7 @@
                               "type": "function (bool,string memory) pure",
                               "value": "require"
                             },
-                            "id": 8859,
+                            "id": 8977,
                             "name": "Identifier",
                             "src": "809:7:34"
                           },
@@ -1156,7 +1156,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "isAuthorized",
-                                  "referencedDeclaration": 8955,
+                                  "referencedDeclaration": 9073,
                                   "type": "function (address,address,bytes4,bytes memory) external returns (bool)"
                                 },
                                 "children": [
@@ -1165,16 +1165,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8851,
+                                      "referencedDeclaration": 8969,
                                       "type": "contract IAuthorization",
                                       "value": "authorization"
                                     },
-                                    "id": 8860,
+                                    "id": 8978,
                                     "name": "Identifier",
                                     "src": "830:13:34"
                                   }
                                 ],
-                                "id": 8861,
+                                "id": 8979,
                                 "name": "MemberAccess",
                                 "src": "830:26:34"
                               },
@@ -1204,16 +1204,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8830,
+                                      "referencedDeclaration": 8948,
                                       "type": "function () view returns (address payable)",
                                       "value": "_msgSender"
                                     },
-                                    "id": 8862,
+                                    "id": 8980,
                                     "name": "Identifier",
                                     "src": "857:10:34"
                                   }
                                 ],
-                                "id": 8863,
+                                "id": 8981,
                                 "name": "FunctionCall",
                                 "src": "857:12:34"
                               },
@@ -1236,7 +1236,7 @@
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_Authorizable_$8906",
+                                          "typeIdentifier": "t_contract$_Authorizable_$9024",
                                           "typeString": "contract Authorizable"
                                         }
                                       ],
@@ -1251,12 +1251,12 @@
                                         "attributes": {
                                           "name": "address"
                                         },
-                                        "id": 8864,
+                                        "id": 8982,
                                         "name": "ElementaryTypeName",
                                         "src": "871:7:34"
                                       }
                                     ],
-                                    "id": 8865,
+                                    "id": 8983,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "871:7:34"
                                   },
@@ -1269,12 +1269,12 @@
                                       "type": "contract Authorizable",
                                       "value": "this"
                                     },
-                                    "id": 8866,
+                                    "id": 8984,
                                     "name": "Identifier",
                                     "src": "879:4:34"
                                   }
                                 ],
-                                "id": 8867,
+                                "id": 8985,
                                 "name": "FunctionCall",
                                 "src": "871:13:34"
                               },
@@ -1297,12 +1297,12 @@
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 8868,
+                                    "id": 8986,
                                     "name": "Identifier",
                                     "src": "886:3:34"
                                   }
                                 ],
-                                "id": 8869,
+                                "id": 8987,
                                 "name": "MemberAccess",
                                 "src": "886:7:34"
                               },
@@ -1332,21 +1332,21 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8841,
+                                      "referencedDeclaration": 8959,
                                       "type": "function () view returns (bytes memory)",
                                       "value": "_msgData"
                                     },
-                                    "id": 8870,
+                                    "id": 8988,
                                     "name": "Identifier",
                                     "src": "895:8:34"
                                   }
                                 ],
-                                "id": 8871,
+                                "id": 8989,
                                 "name": "FunctionCall",
                                 "src": "895:10:34"
                               }
                             ],
-                            "id": 8872,
+                            "id": 8990,
                             "name": "FunctionCall",
                             "src": "830:76:34"
                           },
@@ -1361,32 +1361,32 @@
                               "type": "literal_string \"Authorizable: not authorized\"",
                               "value": "Authorizable: not authorized"
                             },
-                            "id": 8873,
+                            "id": 8991,
                             "name": "Literal",
                             "src": "920:30:34"
                           }
                         ],
-                        "id": 8874,
+                        "id": 8992,
                         "name": "FunctionCall",
                         "src": "809:151:34"
                       }
                     ],
-                    "id": 8875,
+                    "id": 8993,
                     "name": "ExpressionStatement",
                     "src": "809:151:34"
                   },
                   {
-                    "id": 8876,
+                    "id": 8994,
                     "name": "PlaceholderStatement",
                     "src": "970:1:34"
                   }
                 ],
-                "id": 8877,
+                "id": 8995,
                 "name": "Block",
                 "src": "799:179:34"
               }
             ],
-            "id": 8878,
+            "id": 8996,
             "name": "ModifierDefinition",
             "src": "773:205:34"
           },
@@ -1399,7 +1399,7 @@
                 null
               ],
               "name": "_setAuthorization",
-              "scope": 8906,
+              "scope": 9024,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "internal"
@@ -1409,7 +1409,7 @@
                 "attributes": {
                   "text": " @dev Sets authorization."
                 },
-                "id": 8879,
+                "id": 8997,
                 "name": "StructuredDocumentation",
                 "src": "984:50:34"
               },
@@ -1420,7 +1420,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "authorization_",
-                      "scope": 8905,
+                      "scope": 9023,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1433,17 +1433,17 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 8880,
+                        "id": 8998,
                         "name": "ElementaryTypeName",
                         "src": "1066:7:34"
                       }
                     ],
-                    "id": 8881,
+                    "id": 8999,
                     "name": "VariableDeclaration",
                     "src": "1066:22:34"
                   }
                 ],
-                "id": 8882,
+                "id": 9000,
                 "name": "ParameterList",
                 "src": "1065:24:34"
               },
@@ -1454,7 +1454,7 @@
                   ]
                 },
                 "children": [],
-                "id": 8883,
+                "id": 9001,
                 "name": "ParameterList",
                 "src": "1099:0:34"
               },
@@ -1497,7 +1497,7 @@
                               "type": "function (bool,string memory) pure",
                               "value": "require"
                             },
-                            "id": 8884,
+                            "id": 9002,
                             "name": "Identifier",
                             "src": "1109:7:34"
                           },
@@ -1520,11 +1520,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8881,
+                                  "referencedDeclaration": 8999,
                                   "type": "address",
                                   "value": "authorization_"
                                 },
-                                "id": 8885,
+                                "id": 9003,
                                 "name": "Identifier",
                                 "src": "1117:14:34"
                               },
@@ -1562,12 +1562,12 @@
                                         "attributes": {
                                           "name": "address"
                                         },
-                                        "id": 8886,
+                                        "id": 9004,
                                         "name": "ElementaryTypeName",
                                         "src": "1135:7:34"
                                       }
                                     ],
-                                    "id": 8887,
+                                    "id": 9005,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "1135:7:34"
                                   },
@@ -1582,17 +1582,17 @@
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 8888,
+                                    "id": 9006,
                                     "name": "Literal",
                                     "src": "1143:1:34"
                                   }
                                 ],
-                                "id": 8889,
+                                "id": 9007,
                                 "name": "FunctionCall",
                                 "src": "1135:10:34"
                               }
                             ],
-                            "id": 8890,
+                            "id": 9008,
                             "name": "BinaryOperation",
                             "src": "1117:28:34"
                           },
@@ -1607,17 +1607,17 @@
                               "type": "literal_string \"Authorizable: authorization is the zero address\"",
                               "value": "Authorizable: authorization is the zero address"
                             },
-                            "id": 8891,
+                            "id": 9009,
                             "name": "Literal",
                             "src": "1147:49:34"
                           }
                         ],
-                        "id": 8892,
+                        "id": 9010,
                         "name": "FunctionCall",
                         "src": "1109:88:34"
                       }
                     ],
-                    "id": 8893,
+                    "id": 9011,
                     "name": "ExpressionStatement",
                     "src": "1109:88:34"
                   },
@@ -1638,11 +1638,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8851,
+                              "referencedDeclaration": 8969,
                               "type": "contract IAuthorization",
                               "value": "authorization"
                             },
-                            "id": 8894,
+                            "id": 9012,
                             "name": "Identifier",
                             "src": "1207:13:34"
                           },
@@ -1672,11 +1672,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8956,
+                                  "referencedDeclaration": 9074,
                                   "type": "type(contract IAuthorization)",
                                   "value": "IAuthorization"
                                 },
-                                "id": 8895,
+                                "id": 9013,
                                 "name": "Identifier",
                                 "src": "1223:14:34"
                               },
@@ -1685,26 +1685,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8881,
+                                  "referencedDeclaration": 8999,
                                   "type": "address",
                                   "value": "authorization_"
                                 },
-                                "id": 8896,
+                                "id": 9014,
                                 "name": "Identifier",
                                 "src": "1238:14:34"
                               }
                             ],
-                            "id": 8897,
+                            "id": 9015,
                             "name": "FunctionCall",
                             "src": "1223:30:34"
                           }
                         ],
-                        "id": 8898,
+                        "id": 9016,
                         "name": "Assignment",
                         "src": "1207:46:34"
                       }
                     ],
-                    "id": 8899,
+                    "id": 9017,
                     "name": "ExpressionStatement",
                     "src": "1207:46:34"
                   },
@@ -1736,11 +1736,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8856,
+                              "referencedDeclaration": 8974,
                               "type": "function (address)",
                               "value": "AuthorizationSetted"
                             },
-                            "id": 8900,
+                            "id": 9018,
                             "name": "Identifier",
                             "src": "1268:19:34"
                           },
@@ -1749,41 +1749,41 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8881,
+                              "referencedDeclaration": 8999,
                               "type": "address",
                               "value": "authorization_"
                             },
-                            "id": 8901,
+                            "id": 9019,
                             "name": "Identifier",
                             "src": "1288:14:34"
                           }
                         ],
-                        "id": 8902,
+                        "id": 9020,
                         "name": "FunctionCall",
                         "src": "1268:35:34"
                       }
                     ],
-                    "id": 8903,
+                    "id": 9021,
                     "name": "EmitStatement",
                     "src": "1263:40:34"
                   }
                 ],
-                "id": 8904,
+                "id": 9022,
                 "name": "Block",
                 "src": "1099:211:34"
               }
             ],
-            "id": 8905,
+            "id": 9023,
             "name": "FunctionDefinition",
             "src": "1039:271:34"
           }
         ],
-        "id": 8906,
+        "id": 9024,
         "name": "ContractDefinition",
         "src": "429:883:34"
       }
     ],
-    "id": 8907,
+    "id": 9025,
     "name": "SourceUnit",
     "src": "37:1276:34"
   },
@@ -1793,7 +1793,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-03-19T20:25:56.087Z",
+  "updatedAt": "2021-09-16T16:04:34.086Z",
   "devdoc": {
     "author": "Protofire",
     "details": "Contract module which provides an authorization mechanism. This module is used through inheritance. It will make available the modifier `onlyAuthorized`, which can be applied to your functions to restrict their use.",

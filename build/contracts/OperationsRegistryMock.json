@@ -40,28 +40,28 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"allowAsset\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowedAssets\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/test/mocks/OperationsRegistryMock.sol\":\"OperationsRegistryMock\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/test/mocks/OperationsRegistryMock.sol\":{\"keccak256\":\"0x89a8b925b4366f6c960a0f74e7215aa78e54257a667ff1765650f4bcec254d26\",\"urls\":[\"bzz-raw://20b2a15bdb6a2f4ba5a5e5dc3dd0daf510bb14f5d708bfab7c65a8029974e78f\",\"dweb:/ipfs/QmYtoMT62VR652Zo1yj3LHUJLrCHqxTS324Xgr7HhHT9oe\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50610104806100206000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c8063a013b1e7146037578063a4c1cccb14606e575b600080fd5b605a60048036036020811015604b57600080fd5b50356001600160a01b03166091565b604080519115158252519081900360200190f35b605a60048036036020811015608257600080fd5b50356001600160a01b031660b9565b6001600160a01b03166000908152602081905260409020805460ff1916600190811790915590565b60006020819052908152604090205460ff168156fea2646970667358221220cbbaaa0e7b77bbd988b700a70697b4d270c523c3129f5776c73d6044ac787f4464736f6c63430007040033",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c8063a013b1e7146037578063a4c1cccb14606e575b600080fd5b605a60048036036020811015604b57600080fd5b50356001600160a01b03166091565b604080519115158252519081900360200190f35b605a60048036036020811015608257600080fd5b50356001600160a01b031660b9565b6001600160a01b03166000908152602081905260409020805460ff1916600190811790915590565b60006020819052908152604090205460ff168156fea2646970667358221220cbbaaa0e7b77bbd988b700a70697b4d270c523c3129f5776c73d6044ac787f4464736f6c63430007040033",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"allowAsset\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowedAssets\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/test/mocks/OperationsRegistryMock.sol\":\"OperationsRegistryMock\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/test/mocks/OperationsRegistryMock.sol\":{\"keccak256\":\"0x89a8b925b4366f6c960a0f74e7215aa78e54257a667ff1765650f4bcec254d26\",\"urls\":[\"bzz-raw://20b2a15bdb6a2f4ba5a5e5dc3dd0daf510bb14f5d708bfab7c65a8029974e78f\",\"dweb:/ipfs/QmYtoMT62VR652Zo1yj3LHUJLrCHqxTS324Xgr7HhHT9oe\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610104806100206000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c8063a013b1e7146037578063a4c1cccb14606e575b600080fd5b605a60048036036020811015604b57600080fd5b50356001600160a01b03166091565b604080519115158252519081900360200190f35b605a60048036036020811015608257600080fd5b50356001600160a01b031660b9565b6001600160a01b03166000908152602081905260409020805460ff1916600190811790915590565b60006020819052908152604090205460ff168156fea26469706673582212204f602a10d87daf888f39d78228da361ccb5b15bd11423ba9ad588bc53b8f6ae464736f6c63430007040033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c8063a013b1e7146037578063a4c1cccb14606e575b600080fd5b605a60048036036020811015604b57600080fd5b50356001600160a01b03166091565b604080519115158252519081900360200190f35b605a60048036036020811015608257600080fd5b50356001600160a01b031660b9565b6001600160a01b03166000908152602081905260409020805460ff1916600190811790915590565b60006020819052908152604090205460ff168156fea26469706673582212204f602a10d87daf888f39d78228da361ccb5b15bd11423ba9ad588bc53b8f6ae464736f6c63430007040033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "25:216:17:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "25:216:17:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;115:124;;;;;;;;;;;;;;;;-1:-1:-1;115:124:17;-1:-1:-1;;;;;115:124:17;;:::i;:::-;;;;;;;;;;;;;;;;;;63:45;;;;;;;;;;;;;;;;-1:-1:-1;63:45:17;-1:-1:-1;;;;;63:45:17;;:::i;115:124::-;-1:-1:-1;;;;;183:21:17;167:4;183:21;;;;;;;;;;:28;;-1:-1:-1;;183:28:17;207:4;183:28;;;;;;207:4;115:124::o;63:45::-;;;;;;;;;;;;;;;;:::o",
   "source": "pragma solidity ^0.7.0;\n\ncontract OperationsRegistryMock {\n    mapping(address => bool) public allowedAssets;\n\n    function allowAsset(address _asset) public returns (bool) {\n        allowedAssets[_asset] = true;\n        return true;\n    }\n}\n",
-  "sourcePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/test/mocks/OperationsRegistryMock.sol",
+  "sourcePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/test/mocks/OperationsRegistryMock.sol",
   "ast": {
-    "absolutePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/test/mocks/OperationsRegistryMock.sol",
+    "absolutePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/test/mocks/OperationsRegistryMock.sol",
     "exportedSymbols": {
       "OperationsRegistryMock": [
-        6642
+        6760
       ]
     },
-    "id": 6643,
+    "id": 6761,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6621,
+        "id": 6739,
         "literals": [
           "solidity",
           "^",
@@ -77,9 +77,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 6642,
+        "id": 6760,
         "linearizedBaseContracts": [
-          6642
+          6760
         ],
         "name": "OperationsRegistryMock",
         "nodeType": "ContractDefinition",
@@ -87,11 +87,11 @@
           {
             "constant": false,
             "functionSelector": "a4c1cccb",
-            "id": 6625,
+            "id": 6743,
             "mutability": "mutable",
             "name": "allowedAssets",
             "nodeType": "VariableDeclaration",
-            "scope": 6642,
+            "scope": 6760,
             "src": "63:45:17",
             "stateVariable": true,
             "storageLocation": "default",
@@ -100,9 +100,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 6624,
+              "id": 6742,
               "keyType": {
-                "id": 6622,
+                "id": 6740,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "71:7:17",
@@ -118,7 +118,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 6623,
+                "id": 6741,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "82:4:17",
@@ -132,37 +132,37 @@
           },
           {
             "body": {
-              "id": 6640,
+              "id": 6758,
               "nodeType": "Block",
               "src": "173:66:17",
               "statements": [
                 {
                   "expression": {
-                    "id": 6636,
+                    "id": 6754,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 6632,
+                        "id": 6750,
                         "name": "allowedAssets",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6625,
+                        "referencedDeclaration": 6743,
                         "src": "183:13:17",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 6634,
+                      "id": 6752,
                       "indexExpression": {
-                        "id": 6633,
+                        "id": 6751,
                         "name": "_asset",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6627,
+                        "referencedDeclaration": 6745,
                         "src": "197:6:17",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -184,7 +184,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 6635,
+                      "id": 6753,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -204,14 +204,14 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 6637,
+                  "id": 6755,
                   "nodeType": "ExpressionStatement",
                   "src": "183:28:17"
                 },
                 {
                   "expression": {
                     "hexValue": "74727565",
-                    "id": 6638,
+                    "id": 6756,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -225,31 +225,31 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 6631,
-                  "id": 6639,
+                  "functionReturnParameters": 6749,
+                  "id": 6757,
                   "nodeType": "Return",
                   "src": "221:11:17"
                 }
               ]
             },
             "functionSelector": "a013b1e7",
-            "id": 6641,
+            "id": 6759,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "allowAsset",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6628,
+              "id": 6746,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6627,
+                  "id": 6745,
                   "mutability": "mutable",
                   "name": "_asset",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6641,
+                  "scope": 6759,
                   "src": "135:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -258,7 +258,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6626,
+                    "id": 6744,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "135:7:17",
@@ -274,16 +274,16 @@
               "src": "134:16:17"
             },
             "returnParameters": {
-              "id": 6631,
+              "id": 6749,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6630,
+                  "id": 6748,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6641,
+                  "scope": 6759,
                   "src": "167:4:17",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -292,7 +292,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 6629,
+                    "id": 6747,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "167:4:17",
@@ -306,14 +306,14 @@
               ],
               "src": "166:6:17"
             },
-            "scope": 6642,
+            "scope": 6760,
             "src": "115:124:17",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 6643,
+        "scope": 6761,
         "src": "25:216:17"
       }
     ],
@@ -321,10 +321,10 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/Users/lisandro/Protofire/Swarm/swarm-markets-balancer-core-7/contracts/test/mocks/OperationsRegistryMock.sol",
+      "absolutePath": "/home/rodrigo/code/swarm/mumbai/swarm-markets-balancer-core/contracts/test/mocks/OperationsRegistryMock.sol",
       "exportedSymbols": {
         "OperationsRegistryMock": [
-          6642
+          6760
         ]
       }
     },
@@ -338,7 +338,7 @@
             ".0"
           ]
         },
-        "id": 6621,
+        "id": 6739,
         "name": "PragmaDirective",
         "src": "0:23:17"
       },
@@ -354,10 +354,10 @@
           "contractKind": "contract",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            6642
+            6760
           ],
           "name": "OperationsRegistryMock",
-          "scope": 6643
+          "scope": 6761
         },
         "children": [
           {
@@ -366,7 +366,7 @@
               "functionSelector": "a4c1cccb",
               "mutability": "mutable",
               "name": "allowedAssets",
-              "scope": 6642,
+              "scope": 6760,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => bool)",
@@ -383,7 +383,7 @@
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 6622,
+                    "id": 6740,
                     "name": "ElementaryTypeName",
                     "src": "71:7:17"
                   },
@@ -392,17 +392,17 @@
                       "name": "bool",
                       "type": "bool"
                     },
-                    "id": 6623,
+                    "id": 6741,
                     "name": "ElementaryTypeName",
                     "src": "82:4:17"
                   }
                 ],
-                "id": 6624,
+                "id": 6742,
                 "name": "Mapping",
                 "src": "63:24:17"
               }
             ],
-            "id": 6625,
+            "id": 6743,
             "name": "VariableDeclaration",
             "src": "63:45:17"
           },
@@ -416,7 +416,7 @@
                 null
               ],
               "name": "allowAsset",
-              "scope": 6642,
+              "scope": 6760,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "public"
@@ -429,7 +429,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "_asset",
-                      "scope": 6641,
+                      "scope": 6759,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -442,17 +442,17 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6626,
+                        "id": 6744,
                         "name": "ElementaryTypeName",
                         "src": "135:7:17"
                       }
                     ],
-                    "id": 6627,
+                    "id": 6745,
                     "name": "VariableDeclaration",
                     "src": "135:14:17"
                   }
                 ],
-                "id": 6628,
+                "id": 6746,
                 "name": "ParameterList",
                 "src": "134:16:17"
               },
@@ -463,7 +463,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "",
-                      "scope": 6641,
+                      "scope": 6759,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -475,17 +475,17 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 6629,
+                        "id": 6747,
                         "name": "ElementaryTypeName",
                         "src": "167:4:17"
                       }
                     ],
-                    "id": 6630,
+                    "id": 6748,
                     "name": "VariableDeclaration",
                     "src": "167:4:17"
                   }
                 ],
-                "id": 6631,
+                "id": 6749,
                 "name": "ParameterList",
                 "src": "166:6:17"
               },
@@ -517,11 +517,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6625,
+                                  "referencedDeclaration": 6743,
                                   "type": "mapping(address => bool)",
                                   "value": "allowedAssets"
                                 },
-                                "id": 6632,
+                                "id": 6750,
                                 "name": "Identifier",
                                 "src": "183:13:17"
                               },
@@ -530,16 +530,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6627,
+                                  "referencedDeclaration": 6745,
                                   "type": "address",
                                   "value": "_asset"
                                 },
-                                "id": 6633,
+                                "id": 6751,
                                 "name": "Identifier",
                                 "src": "197:6:17"
                               }
                             ],
-                            "id": 6634,
+                            "id": 6752,
                             "name": "IndexAccess",
                             "src": "183:21:17"
                           },
@@ -554,23 +554,23 @@
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 6635,
+                            "id": 6753,
                             "name": "Literal",
                             "src": "207:4:17"
                           }
                         ],
-                        "id": 6636,
+                        "id": 6754,
                         "name": "Assignment",
                         "src": "183:28:17"
                       }
                     ],
-                    "id": 6637,
+                    "id": 6755,
                     "name": "ExpressionStatement",
                     "src": "183:28:17"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 6631
+                      "functionReturnParameters": 6749
                     },
                     "children": [
                       {
@@ -584,32 +584,32 @@
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 6638,
+                        "id": 6756,
                         "name": "Literal",
                         "src": "228:4:17"
                       }
                     ],
-                    "id": 6639,
+                    "id": 6757,
                     "name": "Return",
                     "src": "221:11:17"
                   }
                 ],
-                "id": 6640,
+                "id": 6758,
                 "name": "Block",
                 "src": "173:66:17"
               }
             ],
-            "id": 6641,
+            "id": 6759,
             "name": "FunctionDefinition",
             "src": "115:124:17"
           }
         ],
-        "id": 6642,
+        "id": 6760,
         "name": "ContractDefinition",
         "src": "25:216:17"
       }
     ],
-    "id": 6643,
+    "id": 6761,
     "name": "SourceUnit",
     "src": "0:242:17"
   },
@@ -619,7 +619,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-03-19T20:27:06.001Z",
+  "updatedAt": "2021-09-16T17:22:08.241Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
