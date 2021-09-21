@@ -7,5 +7,6 @@ yarn-error.log
 crytic-export
 mcore_*
 .env
+.setenv
 flats/
 hardhat.config.js
